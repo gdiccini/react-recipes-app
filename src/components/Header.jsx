@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Header.css';
+import PropTypes from 'prop-types';
 
 export default function Header({ title, searchIcon }) {
   return (
@@ -17,3 +18,8 @@ export default function Header({ title, searchIcon }) {
     </header>
   );
 }
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  searchIcon: PropTypes.bool.isRequired,
+};
