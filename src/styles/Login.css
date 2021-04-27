@@ -1,0 +1,28 @@
+.login-container {
+  align-items: center;
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-around;
+  margin: auto;
+}
+
+main {
+  align-items: center;
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  justify-content: space-around;
+  margin-bottom: 20vh;
+}
+
+input {
+  height: 10vh;
+  width: 75vw;
+}
+
+button {
+  width: 11rem;
+}
