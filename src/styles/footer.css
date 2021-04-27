@@ -1,0 +1,12 @@
+footer {
+  background-color: rgb(196, 196, 196);
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100vw;
+}
+
+img {
+  margin: 3vh 5vw;
+}
