@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useLogin from '../effects/useLogin';
 
+import '../styles/Login.css';
+
 export default function Login() {
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -28,49 +30,46 @@ export default function Login() {
   useLogin(userEmail, userPassword, setIsDisabled);
 
   return (
-    <div>
-      <header className="login">
+    <>
+      <header>
         <h1>Login</h1>
       </header>
 
       <main>
-        <div className="user-email">
-          <label htmlFor="Login">
-            <input
-              data-testid="email-input"
-              name="user-email"
-              type="text"
-              placeholder="Email"
-              onChange={ handleChange }
-            />
-          </label>
-        </div>
+        <label htmlFor="Login">
+          <input
+            className="user-email"
+            data-testid="email-input"
+            name="user-email"
+            type="text"
+            placeholder="Email"
+            onChange={ handleChange }
+          />
+        </label>
 
-        <div>
-          <label htmlFor="Password">
-            <input
-              data-testid="password-input"
-              type="password"
-              name="user-password"
-              placeholder="Password"
-              onChange={ handleChange }
-            />
-          </label>
-        </div>
+        <label htmlFor="Password">
+          <input
+            className="user-password"
+            data-testid="password-input"
+            type="password"
+            name="user-password"
+            placeholder="Password"
+            onChange={ handleChange }
+          />
+        </label>
 
-        <div>
-          <Link to="/comidas">
-            <button
-              data-testid="login-submit-btn"
-              type="button"
-              disabled={ isDisabled }
-              onClick={ setUserCredentials }
-            >
-              Sign in
-            </button>
-          </Link>
-        </div>
+        <Link to="/comidas">
+          <button
+            className="btn-login"
+            data-testid="login-submit-btn"
+            type="button"
+            disabled={ isDisabled }
+            onClick={ setUserCredentials }
+          >
+            Sign in
+          </button>
+        </Link>
       </main>
-    </div>
+    </>
   );
 }

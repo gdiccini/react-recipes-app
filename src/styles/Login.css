@@ -1,0 +1,45 @@
+@media (max-width: 360px) {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  header h1 {
+    font-size: 39px;
+    height: 46px;
+    left: 128px;
+    position: absolute;
+    top: 79px;
+    width: 97px;
+  }
+
+  input {
+    background: #f0f0f0;
+    border: none;
+    border-radius: 7px;
+    font-size: 29px;
+    height: 58px;
+    left: 31px;
+    outline: none;
+    position: absolute;
+    top: 155px;
+    width: 293px;
+  }
+
+  input.user-password {
+    top: 243px;
+    width: 293px;
+  }
+
+  .btn-login {
+    background: #6CE34F;
+    border-radius: 9px;
+    font-size: 29px;
+    height: 76px;
+    left: 11px;
+    position: absolute;
+    top: 389px;
+    width: 339px;
+  }
+}
