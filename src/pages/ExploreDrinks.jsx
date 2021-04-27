@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 
 export default function ExploreDrinks() {
@@ -6,7 +7,17 @@ export default function ExploreDrinks() {
   return (
     <div>
       <Header title="Explorar Bebidas" searchIcon={ searchIcon } />
-      <h6>explorar Ingredientes</h6>
+      <Link to="/explorar/bebidas/ingredientes">
+        <button type="button" data-testid="explore-by-ingredient">
+          Por Ingredientes
+        </button>
+      </Link>
+      {/* Requisito 74 abaixo, precisa que seja implementada tela de detalhes */}
+      {/* <Link to="/explorar/bebidas/ingredientes"> */}
+      <button type="button" data-testid="explore-surprise">
+        Me Surpreenda!
+      </button>
+      {/* </Link> */}
     </div>
   );
 }
