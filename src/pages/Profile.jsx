@@ -6,7 +6,6 @@ export default function Profile() {
   return (
     <div>
       <Header title="Perfil" searchIcon={ searchIcon } />
-      <h6>comidas</h6>
     </div>
   );
 }
