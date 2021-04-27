@@ -30,46 +30,52 @@ export default function Login() {
   useLogin(userEmail, userPassword, setIsDisabled);
 
   return (
-    <>
+    <div className="login-container">
       <header>
         <h1>Login</h1>
       </header>
 
       <main>
-        <label htmlFor="Login">
-          <input
-            className="user-email"
-            data-testid="email-input"
-            name="user-email"
-            type="text"
-            placeholder="Email"
-            onChange={ handleChange }
-          />
-        </label>
+        <div>
+          <label htmlFor="Login">
+            <input
+              className="user-email"
+              data-testid="email-input"
+              name="user-email"
+              type="text"
+              placeholder="Email"
+              onChange={ handleChange }
+            />
+          </label>
+        </div>
 
-        <label htmlFor="Password">
-          <input
-            className="user-password"
-            data-testid="password-input"
-            type="password"
-            name="user-password"
-            placeholder="Password"
-            onChange={ handleChange }
-          />
-        </label>
+        <div>
+          <label htmlFor="Password">
+            <input
+              className="user-password"
+              data-testid="password-input"
+              type="password"
+              name="user-password"
+              placeholder="Password"
+              onChange={ handleChange }
+            />
+          </label>
+        </div>
 
         <Link to="/comidas">
-          <button
-            className="btn-login"
-            data-testid="login-submit-btn"
-            type="button"
-            disabled={ isDisabled }
-            onClick={ setUserCredentials }
-          >
-            Sign in
-          </button>
+          <div>
+            <button
+              className="btn-login"
+              data-testid="login-submit-btn"
+              type="button"
+              disabled={ isDisabled }
+              onClick={ setUserCredentials }
+            >
+              Sign in
+            </button>
+          </div>
         </Link>
       </main>
-    </>
+    </div>
   );
 }

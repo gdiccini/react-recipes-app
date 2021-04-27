@@ -1,39 +1,29 @@
-@media (max-width: 360px) {
-  header h1 {
-    font-size: 39px;
-    height: 46px;
-    left: 128px;
-    position: absolute;
-    top: 79px;
-    width: 97px;
-  }
 
-  input {
-    background: #f0f0f0;
-    border: none;
-    border-radius: 7px;
-    font-size: 29px;
-    height: 58px;
-    left: 31px;
-    outline: none;
-    position: absolute;
-    top: 155px;
-    width: 293px;
-  }
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto;
+  background-color: beige;
+  height: 100vh;
+}
 
-  input.user-password {
-    top: 243px;
-    width: 293px;
-  }
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: aqua;
+  height: 20vh;
+  margin-bottom: 20vh;
+}
 
-  .btn-login {
-    background: #6CE34F;
-    border-radius: 9px;
-    font-size: 29px;
-    height: 76px;
-    left: 11px;
-    position: absolute;
-    top: 389px;
-    width: 339px;
-  }
+input {
+  width: 75vw;
+  height: 10vh;
+}
+
+button {
+  width: 11rem;
 }
