@@ -1,21 +1,18 @@
 import { useEffect } from 'react';
 
-export async function filterByCategory(filterCategory, drinks, str, fetch) {
-  if (!filterCategory) setFilteredDrinks(drinks);
-  else {
-    const { [str]: allDrinks } = await fetchDrinkByCategory(filterCategory);
-    setFilteredDrinks(allDrinks.filter((_, index) => index < Number('12')));
-  }
+function useFilterByCategory(fetchByCategory, setFilter, filterCategory, recipes) {
+  useEffect(() => {
+    async function filterByCategory() {
+      if (!filterCategory) setFilter(recipes);
+      else {
+        const resp = await fetchByCategory(filterCategory);
+        const mealsOrDrinks = resp.meals || resp.drinks;
+        setFilter(mealsOrDrinks.filter((_, index) => index < Number('12')));
+      }
+    }
+
+    filterByCategory();
+  }, [fetchByCategory, setFilter, filterCategory, recipes]);
 }
 
-export function useFilterByCategory() {
-  useEffect(filterByCategory, []);
-}
-
-/*
-recipes string,
-filterCategory,
-recipes,
-setFilteredRecipes,
-fetchCategory
-*/
+export default useFilterByCategory;

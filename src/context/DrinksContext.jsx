@@ -1,10 +1,11 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { node } from 'prop-types';
 import {
   fetchDrinkByCategory, fetchDrinkCategories, fetchDrinks,
 } from '../services/APIEndpoints';
 import useRecipe from '../effects/useRecipe';
 import useRecipeCategories from '../effects/useRecipeCategories';
+import useFilterByCategory from '../effects/useFilterByCategory';
 
 export const DrinksContext = createContext();
 
@@ -19,20 +20,10 @@ export function DrinksProvider({ children }) {
     else setFilterCategory('');
   }
 
-  useRecipe('drinks', fetchDrinks, setDrinks);
-  useRecipeCategories('drinks', fetchDrinkCategories, setDrinkCategories);
+  useRecipe(fetchDrinks, setDrinks);
+  useRecipeCategories(fetchDrinkCategories, setDrinkCategories);
 
-  useEffect(() => {
-    async function filterByCategory() {
-      if (!filterCategory) setFilteredDrinks(drinks);
-      else {
-        const { drinks: allDrinks } = await fetchDrinkByCategory(filterCategory);
-        setFilteredDrinks(allDrinks.filter((_, index) => index < Number('12')));
-      }
-    }
-
-    filterByCategory();
-  }, [filterCategory, drinks]);
+  useFilterByCategory(fetchDrinkByCategory, setFilteredDrinks, filterCategory, drinks);
 
   const context = { filteredDrinks, drinkCategories, toggleCategoryFilter };
 
