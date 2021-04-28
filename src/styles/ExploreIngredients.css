@@ -1,8 +1,7 @@
 .ingredientList {
   background-color: white;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   height: 265vh;
   justify-content: space-evenly;
 }
@@ -14,8 +13,8 @@
   box-shadow: 3px 3px rgb(196, 196, 196);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 15rem;
+  justify-content: center;
   margin: 1vh 0.2vw;
   width: 13rem;
 }
