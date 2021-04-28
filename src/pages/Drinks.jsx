@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import DrinkCard from '../components/DrinkCard';
 import { DrinksContext } from '../context/DrinksContext';
+import RecipeCard from '../components/RecipeCard';
 
 export default function Drinks() {
   const {
@@ -42,9 +42,9 @@ export default function Drinks() {
       {
         drinks.map((drink, index, array) => {
           const card = (
-            <DrinkCard
+            <RecipeCard
               key={ drink.idDrink }
-              drink={ drink }
+              recipe={ drink }
               index={ index }
             />
           );

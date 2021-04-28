@@ -4,6 +4,8 @@ import { node } from 'prop-types';
 import {
   fetchMeals, fetchMealCategories, fetchMealByCategory,
 } from '../services/APIEndpoints';
+import useRecipe from '../effects/useRecipe';
+import useRecipeCategories from '../effects/useRecipeCategories';
 
 export const MealsContext = createContext();
 
@@ -18,25 +20,25 @@ export function MealsProvider({ children }) {
     else setFilterCategory('');
   }
 
-  useEffect(() => {
-    async function getMeals() {
-      const { meals: allMeals } = await fetchMeals();
-      setMeals(allMeals.filter((_, index) => index < Number('12')));
-    }
+  // useEffect(() => {
+  //   async function getMeals() {
+  //     const { meals: allMeals } = await fetchMeals();
+  //     setMeals(allMeals.filter((_, index) => index < Number('12')));
+  //   }
 
-    getMeals();
-  }, []);
+  //   async function getMealCategories() {
+  //     const { meals: allCategories } = await fetchMealCategories();
+  //     setMealCategories(allCategories
+  //       .filter((_, index) => index < Number('5'))
+  //       .map(({ strCategory }) => strCategory));
+  //   }
 
-  useEffect(() => {
-    async function getMealCategories() {
-      const { meals: allCategories } = await fetchMealCategories();
-      setMealCategories(allCategories
-        .filter((_, index) => index < Number('5'))
-        .map(({ strCategory }) => strCategory));
-    }
+  //   getMeals();
+  //   getMealCategories();
+  // }, []);
 
-    getMealCategories();
-  }, []);
+  useRecipe('meals', fetchMeals, setMeals);
+  useRecipeCategories('meals', fetchMealCategories, setMealCategories);
 
   useEffect(() => {
     async function filterByCategory() {

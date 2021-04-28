@@ -3,6 +3,8 @@ import { node } from 'prop-types';
 import {
   fetchDrinkByCategory, fetchDrinkCategories, fetchDrinks,
 } from '../services/APIEndpoints';
+import useRecipe from '../effects/useRecipe';
+import useRecipeCategories from '../effects/useRecipeCategories';
 
 export const DrinksContext = createContext();
 
@@ -17,25 +19,8 @@ export function DrinksProvider({ children }) {
     else setFilterCategory('');
   }
 
-  useEffect(() => {
-    async function getDrinks() {
-      const { drinks: allDrinks } = await fetchDrinks();
-      setDrinks(allDrinks.filter((_, index) => index < Number('12')));
-    }
-
-    getDrinks();
-  }, []);
-
-  useEffect(() => {
-    async function getDrinkCategories() {
-      const { drinks: allCategories } = await fetchDrinkCategories();
-      setDrinkCategories(allCategories
-        .filter((_, index) => index < Number('5'))
-        .map(({ strCategory }) => strCategory));
-    }
-
-    getDrinkCategories();
-  }, []);
+  useRecipe('drinks', fetchDrinks, setDrinks);
+  useRecipeCategories('drinks', fetchDrinkCategories, setDrinkCategories);
 
   useEffect(() => {
     async function filterByCategory() {

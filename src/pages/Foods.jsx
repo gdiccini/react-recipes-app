@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-import FoodCard from '../components/FoodCard';
 import { MealsContext } from '../context/MealsContext';
+import RecipeCard from '../components/RecipeCard';
 
 export default function Foods() {
   const {
@@ -44,9 +44,9 @@ export default function Foods() {
       {
         meals.map((meal, index, array) => {
           const card = (
-            <FoodCard
+            <RecipeCard
               key={ meal.idMeal }
-              meal={ meal }
+              recipe={ meal }
               index={ index }
             />
           );
