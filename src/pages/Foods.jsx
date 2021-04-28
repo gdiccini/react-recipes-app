@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -6,20 +8,53 @@ import FoodCard from '../components/FoodCard';
 import { MealsContext } from '../context/MealsContext';
 
 export default function Foods() {
-  const { meals } = useContext(MealsContext);
+  const {
+    filteredMeals: meals, mealCategories, toggleCategoryFilter,
+  } = useContext(MealsContext);
   const searchIcon = true;
+
   return (
     <div>
       <Header title="Comidas" searchIcon={ searchIcon } />
 
+      <div>
+        <button
+          data-testid="All-category-filter"
+          onClick={ toggleCategoryFilter }
+          type="button"
+        >
+          All
+        </button>
+      </div>
+
       {
-        meals.map((meal, index) => (
-          <FoodCard
-            key={ meal.idMeal }
-            meal={ meal }
-            index={ index }
-          />
+        mealCategories.map((category) => (
+          <div key={ category }>
+            <button
+              data-testid={ `${category}-category-filter` }
+              onClick={ toggleCategoryFilter }
+              type="button"
+            >
+              {category}
+            </button>
+          </div>
         ))
+      }
+
+      {
+        meals.map((meal, index, array) => {
+          const card = (
+            <FoodCard
+              key={ meal.idMeal }
+              meal={ meal }
+              index={ index }
+            />
+          );
+
+          return array.length > 1
+            ? <Link key={ meal.idMeal } to={ `/comidas/${meal.idMeal}` }>{card}</Link>
+            : card;
+        })
       }
 
       <Footer />
