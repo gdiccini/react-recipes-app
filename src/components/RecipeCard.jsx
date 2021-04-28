@@ -13,13 +13,13 @@ export default function RecipeCard({ recipe, index }) {
       data-testid={ `${index}-recipe-card` }
     >
       <img
-        src={ isMeal ? recipe.strMealThumb : recipe.strDrinkThumb }
-        alt={ isMeal ? recipe.strMeal : recipe.strDrink }
+        src={ recipe.strMealThumb || recipe.strDrinkThumb }
+        alt={ recipe.strMeal || recipe.strDrink }
         data-testid={ `${index}-card-img` }
       />
 
       <p data-testid={ `${index}-card-name` }>
-        { isMeal ? recipe.strMeal : recipe.strDrink }
+        { recipe.strMeal || recipe.strDrink }
       </p>
     </div>
   );

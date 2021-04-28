@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import { MealsContext } from '../context/MealsContext';
 import RecipeCard from '../components/RecipeCard';
 
-export default function Foods() {
+export default function Meals() {
   const {
     filteredMeals: meals, mealCategories, toggleCategoryFilter,
   } = useContext(MealsContext);
