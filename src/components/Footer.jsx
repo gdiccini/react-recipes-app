@@ -5,14 +5,14 @@ import '../styles/Footer.css';
 function Footer() {
   return (
     <footer data-testid="footer">
-      <Link to="/bebidas" data-testid="drinks-bottom-btn">
-        <img src="/drinkIcon.svg" alt="drinks icon" />
+      <Link to="/bebidas">
+        <img src="/drinkIcon.svg" alt="drinks icon" data-testid="drinks-bottom-btn" />
       </Link>
-      <Link to="/explorar" data-testid="explore-bottom-btn">
-        <img src="/exploreIcon.svg" alt="explore icon" />
+      <Link to="/explorar">
+        <img src="/exploreIcon.svg" alt="explore icon" data-testid="explore-bottom-btn" />
       </Link>
-      <Link to="/comidas" data-testid="food-bottom-btn">
-        <img src="/mealIcon.svg" alt="meal icon" />
+      <Link to="/comidas">
+        <img src="/mealIcon.svg" alt="meal icon" data-testid="food-bottom-btn" />
       </Link>
     </footer>
   );
