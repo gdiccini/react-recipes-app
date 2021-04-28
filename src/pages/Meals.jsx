@@ -1,19 +1,21 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import Footer from '../components/Footer';
 import Header from '../components/Header';
-import { DrinksContext } from '../context/DrinksContext';
+import Footer from '../components/Footer';
+
+import { MealsContext } from '../context/MealsContext';
 import RecipeCard from '../components/RecipeCard';
 
-export default function Drinks() {
+export default function Meals() {
   const {
-    filteredDrinks: drinks, drinkCategories, toggleCategoryFilter,
-  } = useContext(DrinksContext);
+    filteredMeals: meals, mealCategories, toggleCategoryFilter,
+  } = useContext(MealsContext);
   const searchIcon = true;
+
   return (
     <div>
-      <Header title="Bebidas" searchIcon={ searchIcon } />
+      <Header title="Comidas" searchIcon={ searchIcon } />
 
       <div>
         <button
@@ -26,7 +28,7 @@ export default function Drinks() {
       </div>
 
       {
-        drinkCategories.map((category) => (
+        mealCategories.map((category) => (
           <div key={ category }>
             <button
               data-testid={ `${category}-category-filter` }
@@ -40,17 +42,17 @@ export default function Drinks() {
       }
 
       {
-        drinks.map((drink, index, array) => {
+        meals.map((meal, index, array) => {
           const card = (
             <RecipeCard
-              key={ drink.idDrink }
-              recipe={ drink }
+              key={ meal.idMeal }
+              recipe={ meal }
               index={ index }
             />
           );
 
           return array.length > 1
-            ? <Link key={ drink.idDrink } to={ `/bebidas/${drink.idDrink}` }>{card}</Link>
+            ? <Link key={ meal.idMeal } to={ `/comidas/${meal.idMeal}` }>{card}</Link>
             : card;
         })
       }
