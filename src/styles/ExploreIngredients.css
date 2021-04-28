@@ -1,0 +1,21 @@
+.ingredientList {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 265vh;
+  justify-content: space-evenly;
+}
+
+.ingredient-card {
+  align-items: center;
+  border: solid 1px black;
+  border-radius: 10%;
+  box-shadow: 3px 3px rgb(196, 196, 196);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 15rem;
+  margin: 1vh 0.2vw;
+  width: 13rem;
+}
