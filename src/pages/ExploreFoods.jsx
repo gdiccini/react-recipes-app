@@ -17,6 +17,7 @@ export default function ExploreFoods() {
           Por Local de Origem
         </button>
       </Link>
+      {/* Requisito 74 abaixo, precisa que seja implementada tela de detalhes */}
       {/* <Link to="/explorar/comidas/ingredientes"> */}
       <button type="button" data-testid="explore-surprise">
         Me Surpreenda!
