@@ -4,15 +4,15 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { MealsProvider } from './context/MealsContext';
 import { DrinksProvider } from './context/DrinksContext';
 import Login from './pages/Login';
-import Foods from './pages/Foods';
+import Meals from './pages/Meals';
 import Drinks from './pages/Drinks';
 import Profile from './pages/Profile';
 import Explore from './pages/Explore';
-import ExploreFoods from './pages/ExploreFoods';
+import ExploreMeals from './pages/ExploreMeals';
 import ExploreDrinks from './pages/ExploreDrinks';
-import ExploreFoodsIngredients from './pages/ExploreFoodsIngredients';
+import ExploreMealsIngredients from './pages/ExploreMealsIngredients';
 import ExploreDrinksIngredients from './pages/ExploreDrinksIngredients';
-import ExploreFoodByOrigin from './pages/ExploreFoodByOrigin';
+import ExploreMealsByOrigin from './pages/ExploreMealsByOrigin';
 import RecipesDone from './pages/RecipesDone';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 
@@ -26,18 +26,18 @@ function App() {
             <Route path="/receitas-favoritas" component={ FavoriteRecipes } />
             <Route path="/perfil" component={ Profile } />
             <Route
-              component={ ExploreFoodsIngredients }
+              component={ ExploreMealsIngredients }
               path="/explorar/comidas/ingredientes"
             />
-            <Route path="/explorar/comidas/area" component={ ExploreFoodByOrigin } />
-            <Route path="/explorar/comidas" component={ ExploreFoods } />
+            <Route path="/explorar/comidas/area" component={ ExploreMealsByOrigin } />
+            <Route path="/explorar/comidas" component={ ExploreMeals } />
             <Route
               path="/explorar/bebidas/ingredientes"
               component={ ExploreDrinksIngredients }
             />
             <Route path="/explorar/bebidas" component={ ExploreDrinks } />
             <Route path="/explorar" component={ Explore } />
-            <Route path="/comidas" component={ Foods } />
+            <Route path="/comidas" component={ Meals } />
             <Route path="/bebidas" component={ Drinks } />
             <Route exact path="/" component={ Login } />
           </Switch>

@@ -1,7 +1,9 @@
 import React, { createContext } from 'react';
 import { node } from 'prop-types';
 
-export const MealsContext = createContext();
+const MealsContext = createContext();
+
+export default MealsContext;
 
 export function MealsProvider({ children }) {
   const context = {};
