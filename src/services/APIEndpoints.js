@@ -57,3 +57,15 @@ export async function fetchDrinkByFirstLetter(firstLetter) {
   const json = await request.json();
   return json;
 }
+
+export async function fetchRandomMeal() {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+  const json = await request.json();
+  return json;
+}
+
+export async function fetchRandomDrink() {
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+  const json = await request.json();
+  return json;
+}
