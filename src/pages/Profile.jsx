@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import '../styles/Profile.css';
+import Footer from '../components/Footer';
 
 export default function Profile() {
   const searchIcon = false;
@@ -39,6 +40,7 @@ export default function Profile() {
             Sair
           </button>
         </Link>
+        <Footer />
       </main>
     </div>
   );

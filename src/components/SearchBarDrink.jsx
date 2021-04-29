@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router';
 import DrinkContext from '../context/DrinksContext';
 import {
-  SearchCocktailByIngredient,
-  SearchCocktailByName,
-  SearchCocktailByFirstLetter,
-} from '../Services/API.js';
+  fetchDrinkByIngredient,
+  fetchDrinks,
+  fetchDrinkByFirstLetter,
+} from '../services/APIEndpoints';
 
 function SearchBarDrink() {
   const {
@@ -38,13 +38,13 @@ function SearchBarDrink() {
     }
     let response = '';
     if (searchType === 'ingredient-search') {
-      response = await SearchCocktailByIngredient(searchInput);
+      response = await fetchDrinkByIngredient(searchInput);
     }
     if (searchType === 'name-search') {
-      response = await SearchCocktailByName(searchInput);
+      response = await fetchDrinks(searchInput);
     }
     if (searchType === 'first-letter-search') {
-      response = await SearchCocktailByFirstLetter(searchInput);
+      response = await fetchDrinkByFirstLetter(searchInput);
     }
     if (response.drinks !== null && searchType !== '') {
       return setDrinks(response.drinks);

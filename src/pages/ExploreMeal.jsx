@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function ExploreFoods() {
   const searchIcon = false;
@@ -23,6 +24,7 @@ export default function ExploreFoods() {
         Me Surpreenda!
       </button>
       {/* </Link> */}
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function ExploreDrinks() {
   const searchIcon = false;
@@ -18,6 +19,7 @@ export default function ExploreDrinks() {
         Me Surpreenda!
       </button>
       {/* </Link> */}
+      <Footer />
     </div>
   );
 }

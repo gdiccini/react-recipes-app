@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router';
-import MealsContext from '../context/MealsContext';
+import { MealsContext } from '../context/MealsContext';
 import {
-  SearchMealByIngredient,
-  SearchMealByName,
-  SearchMealByFirstLetter,
-} from '../Services/API.js';
+  fetchMealByIngredient,
+  fetchMeals,
+  fetchMealByFirstLetter,
+} from '../services/APIEndpoints';
 
 function SearchBarMeals() {
   const {
@@ -38,13 +38,13 @@ function SearchBarMeals() {
     }
     let response = '';
     if (searchType === 'ingredient-search') {
-      response = await SearchMealByIngredient(searchInput);
+      response = await fetchMealByIngredient(searchInput);
     }
     if (searchType === 'name-search') {
-      response = await SearchMealByName(searchInput);
+      response = await fetchMeals(searchInput);
     }
     if (searchType === 'first-letter-search') {
-      response = await SearchMealByFirstLetter(searchInput);
+      response = await fetchMealByFirstLetter(searchInput);
     }
     if (response.meals !== null && searchType !== '') {
       return setMeals(response.meals);
