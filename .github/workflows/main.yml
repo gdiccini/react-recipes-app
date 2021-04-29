@@ -23,7 +23,7 @@ jobs:
         uses: betrybe/cypress-evaluator-action@v5
         with:
           repository-test-name: 'betrybe/sd-0x-recipes-app-n-tests'
-          repository-test-branch: 'master'
+          repository-test-branch: 'test-fix'
           npm-start: true
           browser: 'electron'
       - name: Store evaluation step

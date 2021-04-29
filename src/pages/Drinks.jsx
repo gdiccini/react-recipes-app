@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SearchBarDrink from '../components/SearchBarDrink';
-import { DrinksContext } from '../context/DrinksContext';
+import DrinksContext from '../context/DrinksContext';
 import RecipeCard from '../components/RecipeCard';
 
 export default function Drinks() {
@@ -14,7 +14,11 @@ export default function Drinks() {
   const searchIcon = true;
   return (
     <div>
-      <Header title="Bebidas" component={ <SearchBarDrink /> }  searchIcon={ searchIcon } />
+      <Header
+        title="Bebidas"
+        component={ <SearchBarDrink /> }
+        searchIcon={ searchIcon }
+      />
 
       <div>
         <button

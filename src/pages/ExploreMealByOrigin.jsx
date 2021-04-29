@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function ExploreFoodByOrigin() {
   const searchIcon = true;
@@ -7,6 +8,7 @@ export default function ExploreFoodByOrigin() {
     <div>
       <Header title="Explorar Origem" searchIcon={ searchIcon } />
       <h6>explorar comidas por origem</h6>
+      <Footer />
     </div>
   );
 }
