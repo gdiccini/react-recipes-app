@@ -1,6 +1,5 @@
 import React, { createContext, useState } from 'react';
 import { node } from 'prop-types';
-
 import {
   fetchMeals, fetchMealCategories, fetchMealByCategory,
 } from '../services/APIEndpoints';
