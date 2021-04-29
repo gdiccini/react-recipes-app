@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
-import Foods from '../pages/Foods';
+import Meals from '../pages/Meals';
 import Footer from '../components/Footer';
 
 describe('Testes referentes ao Footer', () => {
@@ -11,28 +11,28 @@ describe('Testes referentes ao Footer', () => {
   const MEALS_BTN = 'food-bottom-btn';
 
   it('19.1 - verifica se renderiza o footer corretamente', () => {
-    const { getByTestId } = renderWithRouter(<Foods />);
+    const { getByTestId } = renderWithRouter(<Meals />);
     const footer = getByTestId(FOOTER);
 
     expect(footer).toBeInTheDocument();
   });
 
   it('19.2 - verifica se renderiza o botão de bebidas corretamente', () => {
-    const { getByTestId } = renderWithRouter(<Foods />);
+    const { getByTestId } = renderWithRouter(<Meals />);
     const drinksBtn = getByTestId(DRINKS_BTN);
 
     expect(drinksBtn).toBeInTheDocument();
   });
 
   it('19.3 - verifica se renderiza o botão de explorar corretamente', () => {
-    const { getByTestId } = renderWithRouter(<Foods />);
+    const { getByTestId } = renderWithRouter(<Meals />);
     const exploreBtn = getByTestId(EXPLORE_BTN);
 
     expect(exploreBtn).toBeInTheDocument();
   });
 
   it('19.4 - verifica se renderiza o botão de comidas corretamente', () => {
-    const { getByTestId } = renderWithRouter(<Foods />);
+    const { getByTestId } = renderWithRouter(<Meals />);
     const mealsBtn = getByTestId(MEALS_BTN);
 
     expect(mealsBtn).toBeInTheDocument();
@@ -57,21 +57,21 @@ describe('Testes referentes ao Footer', () => {
   });
 
   it('22 - verifica a rota do botão de bebidas', () => {
-    const { getByTestId, history } = renderWithRouter(<Foods />);
+    const { getByTestId, history } = renderWithRouter(<Meals />);
     const drinksBtn = getByTestId(DRINKS_BTN);
     userEvent.click(drinksBtn);
     expect(history.location.pathname).toBe('/bebidas');
   });
 
   it('23 - verifica a rota do botão de explorar', () => {
-    const { getByTestId, history } = renderWithRouter(<Foods />);
+    const { getByTestId, history } = renderWithRouter(<Meals />);
     const exploreBtn = getByTestId(EXPLORE_BTN);
     userEvent.click(exploreBtn);
     expect(history.location.pathname).toBe('/explorar');
   });
 
   it('24 - verifica a rota do botão de comidas', () => {
-    const { getByTestId, history } = renderWithRouter(<Foods />);
+    const { getByTestId, history } = renderWithRouter(<Meals />);
     const exploreBtn = getByTestId(EXPLORE_BTN);
     userEvent.click(exploreBtn);
     const mealsBtn = getByTestId(MEALS_BTN);
