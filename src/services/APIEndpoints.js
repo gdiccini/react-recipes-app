@@ -81,3 +81,15 @@ export async function fetchRandomDrink() {
   const json = await request.json();
   return json;
 }
+
+export async function fetchMealsAreas() {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
+  const json = await request.json();
+  return json;
+}
+
+export async function fetchMealsByArea(area) {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
+  const json = await request.json();
+  return json;
+}

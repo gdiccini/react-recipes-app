@@ -1,18 +1,12 @@
-import { shape, string } from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player/youtube';
-import { Link } from 'react-router-dom';
-import RecipeHeader from '../components/RecipeHeader';
+import { shape, string } from 'prop-types';
+import { fetchDrinkById, fetchMealById } from '../services/APIEndpoints';
 import RecipeIngredients from '../components/RecipeIngredients';
+import RecipeHeader from '../components/RecipeHeader';
 import RecipeInstructions from '../components/RecipeInstructions';
 
-import { fetchMealById, fetchDrinkById } from '../services/APIEndpoints';
-
-// import '../styles/Details.css';
-
-export default function Details({ match: { url, params: { id } } }) {
+export default function RecipeInProgress({ match: { url, params: { id } } }) {
   const [recipe, setRecipe] = useState({});
-  const [recipeType, setRecipeType] = useState('comidas');
 
   useEffect(() => {
     async function getRecipe() {
@@ -21,7 +15,6 @@ export default function Details({ match: { url, params: { id } } }) {
         setRecipe(meals[0]);
       } else {
         const { drinks } = await fetchDrinkById(id);
-        setRecipeType('bebidas');
         setRecipe(drinks[0]);
       }
     }
@@ -34,21 +27,11 @@ export default function Details({ match: { url, params: { id } } }) {
       <RecipeHeader recipe={ recipe } />
       <RecipeIngredients recipe={ recipe } url={ url } />
       <RecipeInstructions recipe={ recipe } />
-      {url.includes('comidas') && (
-        <ReactPlayer
-          url={ recipe.strYoutube }
-          width={ 360 }
-        />
-      )}
-      {/* receitas recomendadas => carrousel */}
-      <Link to={ `/${recipeType}/${id}/in-progress` }>
-        <button type="button">INICIAR RECEITA</button>
-      </Link>
     </>
   );
 }
 
-Details.propTypes = {
+RecipeInProgress.propTypes = {
   match: shape({
     params: shape({
       id: string,

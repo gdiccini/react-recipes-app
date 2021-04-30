@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.recipe-header img {
+  width: 360px;
+  height: 100%;
+  margin: 0;
+}
+
+.ingredients-measures {
+  display: flex;
+  flex-direction: column;
+}
