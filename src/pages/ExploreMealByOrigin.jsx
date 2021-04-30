@@ -39,9 +39,7 @@ export default function ExploreFoodByOrigin() {
   return (
     <div>
       <Header title="Explorar Origem" searchIcon={ searchIcon } />
-      <h6>explorar comidas por origem</h6>
       <select data-testid="explore-by-area-dropdown" onChange={ handleChange }>
-        {/* Precisa rever o requisito  80 sobre o option ALL */}
         <option data-testid="All-option" value="All">All</option>
         {
           areas.map((area, index) => (
