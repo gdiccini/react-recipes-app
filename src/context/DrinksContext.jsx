@@ -7,7 +7,9 @@ import useRecipe from '../effects/useRecipe';
 import useRecipeCategories from '../effects/useRecipeCategories';
 import useFilterByCategory from '../effects/useFilterByCategory';
 
-export const DrinksContext = createContext();
+const DrinksContext = createContext();
+
+export default DrinksContext;
 
 export function DrinksProvider({ children }) {
   const [drinks, setDrinks] = useState([]);

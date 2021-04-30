@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import IngredientCard from '../components/IngredientCard';
 import useIngredientList from '../effects/useIngredientList';
 
+
 export default function ExploreMealsIngredients() {
   const searchIcon = false;
   const itemCardMax = 12;
@@ -29,6 +30,7 @@ export default function ExploreMealsIngredients() {
             />
           ))}
       </main>
+
       <Footer />
     </div>
   );

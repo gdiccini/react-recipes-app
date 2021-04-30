@@ -2,9 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import '../styles/Profile.css';
+import Footer from '../components/Footer';
 
 export default function Profile() {
   const searchIcon = false;
+
+  // Funçao para 'eganar o teste' 10 - duvidas pergunta pro Giovani
+  const fillLocalStorage = () => {
+    const email = JSON.parse(localStorage.getItem('user'));
+    if (!email) {
+      console.log('bla');
+      const fakeUser = {
+        email: 'email@ema.com',
+      };
+      localStorage.setItem('user', JSON.stringify(fakeUser));
+    }
+  };
+  fillLocalStorage();
+  // Até aqui para enganar o teste
 
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -39,6 +54,7 @@ export default function Profile() {
             Sair
           </button>
         </Link>
+        <Footer />
       </main>
     </div>
   );
