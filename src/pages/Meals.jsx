@@ -16,7 +16,11 @@ export default function Meals() {
 
   return (
     <div>
-      <Header title="Comidas" component={ <SearchBarMeals /> } searchIcon={ searchIcon } />
+      <Header
+        title="Comidas"
+        component={ <SearchBarMeals /> }
+        searchIcon={ searchIcon }
+      />
 
       <div>
         <button
