@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 
-export default function useRecipe(fetchRecipe, setRecipes) {
+export default function useRecipe(fetchRecipe, setRecipes, id = '') {
   useEffect(() => {
     async function getRecipes() {
-      const resp = await fetchRecipe();
+      const resp = await fetchRecipe(id);
       const mealsOrDrinks = resp.meals || resp.drinks;
-      // console.log(resp);
-      setRecipes(mealsOrDrinks.filter((_, index) => index < Number('12')));
+      setRecipes(mealsOrDrinks);
     }
 
     getRecipes();
-  }, [fetchRecipe, setRecipes]);
+  }, [fetchRecipe, setRecipes, id]);
 }

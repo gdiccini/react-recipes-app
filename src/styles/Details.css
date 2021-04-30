@@ -1,4 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .recipe-details img {
   width: 40%;
 }
 
+.ingredients-measures {
+  display: flex;
+  flex-direction: column;
+}

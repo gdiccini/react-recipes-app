@@ -5,9 +5,7 @@ export default function useRecipeCategories(fetchCategories, setCategories) {
     async function getCategories() {
       const resp = await fetchCategories();
       const mealsOrDrinks = resp.meals || resp.drinks;
-      setCategories(mealsOrDrinks
-        .filter((_, index) => index < Number('5'))
-        .map(({ strCategory }) => strCategory));
+      setCategories(mealsOrDrinks.map(({ strCategory }) => strCategory));
     }
 
     getCategories();
