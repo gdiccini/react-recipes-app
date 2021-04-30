@@ -20,7 +20,7 @@ export default function RecipeHeader({ recipe }) {
       <button type="button" data-testid="favorite-btn">favoritar</button>
 
       <p data-testid="recipe-category">
-        { recipe.strCategory }
+        { recipe.strAlcoholic || recipe.strCategory }
       </p>
     </header>
   );

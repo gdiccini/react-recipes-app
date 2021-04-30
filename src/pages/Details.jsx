@@ -8,7 +8,7 @@ import RecipeInstructions from '../components/RecipeInstructions';
 
 import { fetchMealById, fetchDrinkById } from '../services/APIEndpoints';
 
-// import '../styles/Details.css';
+import '../styles/Details.css';
 
 export default function Details({ match: { url, params: { id } } }) {
   const [recipe, setRecipe] = useState({});
@@ -36,14 +36,22 @@ export default function Details({ match: { url, params: { id } } }) {
       <RecipeInstructions recipe={ recipe } />
       {url.includes('comidas') && (
         <ReactPlayer
+          data-testid="video"
           url={ recipe.strYoutube }
           width={ 360 }
         />
       )}
       {/* receitas recomendadas => carrousel */}
       <Link to={ `/${recipeType}/${id}/in-progress` }>
-        <button type="button">INICIAR RECEITA</button>
+        <button
+          data-testid="start-recipe-btn"
+          type="button"
+          className="start-recipe-btn"
+        >
+          INICIAR RECEITA
+        </button>
       </Link>
+      <p data-testid="0-recomendation-card">bla</p>
     </>
   );
 }

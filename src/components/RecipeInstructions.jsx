@@ -4,8 +4,8 @@ import React from 'react';
 export default function RecipeInstructions({ recipe }) {
   return (
     <section>
-      <h3 data-testid="instruction">Instructions</h3>
-      <p>{ recipe.strInstructions }</p>
+      <h3>Instructions</h3>
+      <p data-testid="instructions">{ recipe.strInstructions }</p>
     </section>
   );
 }
