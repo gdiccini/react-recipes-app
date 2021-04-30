@@ -7,13 +7,6 @@ const mealCategories = {
     { strCategory: 'Goat' },
     { strCategory: 'Lamb' },
     { strCategory: 'Miscellaneous' },
-    { strCategory: 'Pasta' },
-    { strCategory: 'Pork' },
-    { strCategory: 'Seafood' },
-    { strCategory: 'Side' },
-    { strCategory: 'Starter' },
-    { strCategory: 'Vegan' },
-    { strCategory: 'Vegetarian' }
   ]
 };
 
