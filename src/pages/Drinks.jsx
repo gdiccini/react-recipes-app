@@ -7,10 +7,10 @@ import SearchBarDrink from '../components/SearchBarDrink';
 import DrinksContext from '../context/DrinksContext';
 import RecipeCard from '../components/RecipeCard';
 
-export default function Drinks() {
+export default function Drinks({ testeContext }) {
   const {
     filteredDrinks: drinks, drinkCategories, toggleCategoryFilter,
-  } = useContext(DrinksContext);
+  } = useContext(testeContext || DrinksContext);
   const searchIcon = true;
   return (
     <div>

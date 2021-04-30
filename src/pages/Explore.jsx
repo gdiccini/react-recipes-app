@@ -18,6 +18,7 @@ export default function Explore() {
         </Link>
         <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

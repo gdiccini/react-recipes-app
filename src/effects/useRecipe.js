@@ -5,6 +5,7 @@ export default function useRecipe(fetchRecipe, setRecipes) {
     async function getRecipes() {
       const resp = await fetchRecipe();
       const mealsOrDrinks = resp.meals || resp.drinks;
+      // console.log(resp);
       setRecipes(mealsOrDrinks.filter((_, index) => index < Number('12')));
     }
 

@@ -8,12 +8,11 @@ import Footer from '../components/Footer';
 import { MealsContext } from '../context/MealsContext';
 import RecipeCard from '../components/RecipeCard';
 
-export default function Meals() {
+export default function Meals({ testeContext }) {
   const {
     filteredMeals: meals, mealCategories, toggleCategoryFilter,
-  } = useContext(MealsContext);
+  } = useContext(testeContext || MealsContext);
   const searchIcon = true;
-
   return (
     <div>
       <Header
