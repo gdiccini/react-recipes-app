@@ -1,0 +1,9 @@
+.RecipeIngredients .ingredients-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.RecipeIngredients input {
+  height: 2vh;
+  width: 4vw;
+}
