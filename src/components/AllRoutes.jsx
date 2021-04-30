@@ -14,6 +14,7 @@ import ExploreMealByOrigin from '../pages/ExploreMealByOrigin';
 import RecipesDone from '../pages/RecipesDone';
 import FavoriteRecipes from '../pages/FavoriteRecipes';
 import Details from '../pages/Details';
+import NotFound from '../pages/NotFound';
 
 export default function AllRoutes() {
   return (
@@ -27,6 +28,7 @@ export default function AllRoutes() {
           path="/explorar/comidas/ingredientes"
         />
         <Route path="/explorar/comidas/area" component={ ExploreMealByOrigin } />
+        <Route path="/explorar/bebidas/area" component={ NotFound } />
         <Route path="/explorar/comidas/" component={ ExploreMeal } />
         <Route
           path="/explorar/bebidas/ingredientes"
