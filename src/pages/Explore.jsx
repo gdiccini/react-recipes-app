@@ -16,6 +16,7 @@ export default function Explore() {
         <Link to="/explorar/bebidas">
           <button type="button" data-testid="explore-drinks">Explorar Bebidas</button>
         </Link>
+        <Footer />
       </div>
       <Footer />
     </div>

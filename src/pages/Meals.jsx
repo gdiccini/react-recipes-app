@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from '../components/Header';
+import SearchBarMeals from '../components/SearchBarMeals';
 import Footer from '../components/Footer';
 
 import { MealsContext } from '../context/MealsContext';
@@ -14,7 +15,11 @@ export default function Meals({ testeContext }) {
   const searchIcon = true;
   return (
     <div>
-      <Header title="Comidas" searchIcon={ searchIcon } />
+      <Header
+        title="Comidas"
+        component={ <SearchBarMeals /> }
+        searchIcon={ searchIcon }
+      />
 
       <div>
         <button

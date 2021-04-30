@@ -1,11 +1,11 @@
-export async function fetchMeals() {
-  const getMeals = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+export async function fetchMeals(name = '') {
+  const getMeals = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
   const response = await getMeals.json();
   return response;
 }
 
-export async function fetchDrinks() {
-  const getDrinks = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+export async function fetchDrinks(name = '') {
+  const getDrinks = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
   const response = await getDrinks.json();
   return response;
 }
@@ -38,4 +38,39 @@ export async function fetchMealById(id) {
   const getMealRecipe = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
   const response = await getMealRecipe.json();
   return response;
+}
+export async function fetchMealByIngredient(ingredient) {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+  const json = await request.json();
+  return json;
+}
+
+export async function fetchDrinkByIngredient(ingredient) {
+  const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+  const json = await request.json();
+  return json;
+}
+
+export async function fetchMealByFirstLetter(firstLetter) {
+  const request = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${firstLetter}`);
+  const json = await request.json();
+  return json;
+}
+
+export async function fetchDrinkByFirstLetter(firstLetter) {
+  const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`);
+  const json = await request.json();
+  return json;
+}
+
+export async function fetchRandomMeal() {
+  const request = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+  const json = await request.json();
+  return json;
+}
+
+export async function fetchRandomDrink() {
+  const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+  const json = await request.json();
+  return json;
 }
