@@ -6,7 +6,6 @@ import { fetchMeals, fetchMealsAreas, fetchMealsByArea } from '../services/APIEn
 import RecipeCard from '../components/RecipeCard';
 
 export default function ExploreFoodByOrigin() {
-  const searchIcon = true;
   const [areas, setAreas] = useState([]);
   const [selectedArea, setSelectedArea] = useState('All');
   const [mealsByArea, setMealsByArea] = useState([]);
@@ -38,7 +37,7 @@ export default function ExploreFoodByOrigin() {
 
   return (
     <div>
-      <Header title="Explorar Origem" searchIcon={ searchIcon } />
+      <Header title="Explorar Origem" searchIcon />
       <select data-testid="explore-by-area-dropdown" onChange={ handleChange }>
         <option data-testid="All-option" value="All">All</option>
         {
@@ -53,17 +52,19 @@ export default function ExploreFoodByOrigin() {
           ))
         }
       </select>
-      {
-        (mealsByArea.length > 1) && mealsByArea.map((meal, index) => (
-          <Link key={ meal.idmeal } to={ `/comidas/${meal.idMeal}` }>
-            <RecipeCard
-              key={ meal.idmeal }
-              recipe={ meal }
-              index={ index }
-            />
-          </Link>
-        ))
-      }
+      <main className="ingredientList">
+        {
+          (mealsByArea.length > 1) && mealsByArea.map((meal, index) => (
+            <Link key={ meal.idmeal } to={ `/comidas/${meal.idMeal}` }>
+              <RecipeCard
+                key={ meal.idmeal }
+                recipe={ meal }
+                index={ index }
+              />
+            </Link>
+          ))
+        }
+      </main>
       <Footer />
     </div>
   );

@@ -33,7 +33,7 @@ export default function Header({ title, searchIcon }) {
         >
           <img
             alt="search"
-            src="searchIcon.svg"
+            src="/searchIcon.svg"
             data-testid="search-top-btn"
           />
         </button>

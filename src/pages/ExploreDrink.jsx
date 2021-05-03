@@ -20,16 +20,20 @@ export default function ExploreDrinks() {
   return (
     <div>
       <Header title="Explorar Bebidas" searchIcon={ searchIcon } />
-      <Link to="/explorar/bebidas/ingredientes">
-        <button type="button" data-testid="explore-by-ingredient">
-          Por Ingredientes
-        </button>
-      </Link>
-      <Link to={ `/bebidas/${id}` }>
-        <button type="button" data-testid="explore-surprise">
-          Me Surpreenda!
-        </button>
-      </Link>
+      <div className="link-container">
+        <Link to="/explorar/bebidas/ingredientes">
+          <button type="button" data-testid="explore-by-ingredient">
+            Por Ingredientes
+          </button>
+        </Link>
+      </div>
+      <div className="link-container">
+        <Link to={ `/bebidas/${id}` }>
+          <button type="button" data-testid="explore-surprise">
+            Me Surpreenda!
+          </button>
+        </Link>
+      </div>
       <Footer />
     </div>
   );

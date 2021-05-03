@@ -1,6 +1,6 @@
 .login-container {
   align-items: center;
-  background-color: beige;
+  background-color: white;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -8,9 +8,8 @@
   margin: auto;
 }
 
-main {
+.login-main {
   align-items: center;
-  background-color: aqua;
   display: flex;
   flex-direction: column;
   height: 20vh;
@@ -18,11 +17,20 @@ main {
   margin-bottom: 20vh;
 }
 
-input {
+.user-email, .user-password {
   height: 10vh;
+  margin: 2vh;
   width: 75vw;
 }
 
-button {
-  width: 11rem;
+.user-password-input {
+  margin-bottom: 10vh;
+}
+
+.btn-login {
+  background-color: #6CE34F;
+  box-sizing: border-box;
+  border-radius: 20% 50%;
+  height: 3rem;
+  width: 4rem;
 }
