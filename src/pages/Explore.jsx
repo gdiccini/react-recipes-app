@@ -10,13 +10,16 @@ export default function Explore() {
     <div>
       <Header title="Explorar" searchIcon={ searchIcon } />
       <div className="Explore">
-        <Link to="/explorar/comidas">
-          <button type="button" data-testid="explore-food">Explorar Comidas</button>
-        </Link>
-        <Link to="/explorar/bebidas">
-          <button type="button" data-testid="explore-drinks">Explorar Bebidas</button>
-        </Link>
-        <Footer />
+        <div className="link-container">
+          <Link to="/explorar/comidas">
+            <button type="button" data-testid="explore-food">Explorar Comidas</button>
+          </Link>
+        </div>
+        <div className="link-container">
+          <Link to="/explorar/bebidas">
+            <button type="button" data-testid="explore-drinks">Explorar Bebidas</button>
+          </Link>
+        </div>
       </div>
       <Footer />
     </div>

@@ -1,0 +1,15 @@
+.recipe-in-progress {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.recipe-in-progress input {
+  height: 2vh;
+  margin: auto;
+  width: 4vw;
+}
+
+.recipe-in-progress input:checked + label {
+  text-decoration: line-through;
+}

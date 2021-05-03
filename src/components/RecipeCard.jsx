@@ -1,23 +1,23 @@
 import React from 'react';
 import { arrayOf } from 'prop-types';
 
-import '../styles/RecipeCard.css';
+import '../styles/ExploreIngredients.css';
 
-export default function RecipeCard({ recipe, index }) {
-  let isMeal = false;
-  if (recipe.strMeal) isMeal = true;
-
+export default function RecipeCard({ recipe, index, category }) {
   return (
     <div
-      className={ isMeal ? 'meal-card' : 'drink-card' }
+      className="ingredient-card"
       data-testid={ `${index}-recipe-card` }
     >
       <img
         src={ recipe.strMealThumb || recipe.strDrinkThumb }
         alt={ recipe.strMeal || recipe.strDrink }
         data-testid={ `${index}-card-img` }
+        className="recipe-img"
       />
-
+      { category && (
+        <p className="category">{recipe.strAlcoholic || recipe.strCategory}</p>
+      ) }
       <p data-testid={ `${index}-card-name` }>
         { recipe.strMeal || recipe.strDrink }
       </p>

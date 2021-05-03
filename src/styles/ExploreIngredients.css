@@ -2,19 +2,39 @@
   background-color: white;
   display: flex;
   flex-flow: row wrap;
-  height: 265vh;
+  height: 130rem;
   justify-content: space-evenly;
+  margin-bottom: 10vh;
 }
 
 .ingredient-card {
   align-items: center;
   border: solid 1px black;
-  border-radius: 10%;
+  border-radius: 5vh;
   box-shadow: 3px 3px rgb(196, 196, 196);
   display: flex;
   flex-direction: column;
   height: 15rem;
   justify-content: center;
-  margin: 1vh 0.2vw;
+  margin: 0.15rem;
   width: 13rem;
+}
+
+.recipe-img {
+  border-radius: 2vh;
+  width: 10rem;
+}
+
+.filter-btn {
+  height: 5vh;
+  margin: 1vh;
+  width: 30vw;
+}
+
+.category-container {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 0;
 }
