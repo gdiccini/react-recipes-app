@@ -15,7 +15,6 @@ import {
 
 import 'react-multi-carousel/lib/styles.css';
 import '../styles/Details.css';
-import RecipeCard from '../components/RecipeCard';
 
 export default function Details({ match: { url, params: { id } } }) {
   const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || {};
@@ -150,4 +149,3 @@ Details.propTypes = {
     }),
   }),
 }.isRequired;
-
