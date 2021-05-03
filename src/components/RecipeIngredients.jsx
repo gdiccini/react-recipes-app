@@ -14,9 +14,8 @@ export default function RecipeIngredients({ url, recipe }) {
           <section className="recipe-in-progress">
             {
               ingredients.map((ingredient, index) => recipe[ingredient] && (
-                <div key={ ingredient }>
+                <div key={ ingredient } data-testid={ `${index}-ingredient-step` }>
                   <input
-                    data-testid={ `${index}-ingredient-step` }
                     type="checkbox"
                     id={ `ingredientsAndMeasures${index}` }
                   />

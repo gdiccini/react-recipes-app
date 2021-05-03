@@ -24,7 +24,7 @@ export default function RecipeInProgress({ match: { url, params: { id } } }) {
 
   return (
     <>
-      <RecipeHeader recipe={ recipe } />
+      <RecipeHeader recipe={ recipe } url={ url } />
       <RecipeIngredients recipe={ recipe } url={ url } />
       <RecipeInstructions recipe={ recipe } />
     </>

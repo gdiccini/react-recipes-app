@@ -11,6 +11,10 @@ import { fetchMealById, fetchDrinkById } from '../services/APIEndpoints';
 import '../styles/Details.css';
 
 export default function Details({ match: { url, params: { id } } }) {
+  const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || {};
+
+  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+
   const [recipe, setRecipe] = useState({});
   const [recipeType, setRecipeType] = useState('comidas');
 
@@ -29,9 +33,18 @@ export default function Details({ match: { url, params: { id } } }) {
     getRecipe();
   }, [id, url]);
 
+  const startButtonText = () => {
+    const inProgressRecipesKeys = Object.keys(inProgressRecipes);
+    const inProgressRecipesIds = inProgressRecipesKeys
+      .map((key) => Object.keys(inProgressRecipes[key])).flat();
+    return inProgressRecipesIds
+      .includes(recipe.idMeal || recipe.idDrink)
+      ? 'Continuar Receita' : 'Iniciar Receita';
+  };
+
   return (
     <>
-      <RecipeHeader recipe={ recipe } />
+      <RecipeHeader recipe={ recipe } url={ url } />
       <RecipeIngredients recipe={ recipe } url={ url } />
       <RecipeInstructions recipe={ recipe } />
       {url.includes('comidas') && (
@@ -41,17 +54,25 @@ export default function Details({ match: { url, params: { id } } }) {
           width={ 360 }
         />
       )}
+
       {/* receitas recomendadas => carrousel */}
-      <Link to={ `/${recipeType}/${id}/in-progress` }>
-        <button
-          data-testid="start-recipe-btn"
-          type="button"
-          className="start-recipe-btn"
-        >
-          INICIAR RECEITA
-        </button>
-      </Link>
-      <p data-testid="0-recomendation-card">bla</p>
+
+      {
+        doneRecipes
+          .every((recipeDone) => recipeDone.id !== (recipe.idMeal || recipe.idDrink))
+          && (
+            <Link to={ `/${recipeType}/${id}/in-progress` }>
+              <button
+                data-testid="start-recipe-btn"
+                type="button"
+                className="start-recipe-btn"
+              >
+                {startButtonText()}
+              </button>
+            </Link>
+          )
+      }
+      <p data-testid="0-recomendation-card" />
     </>
   );
 }

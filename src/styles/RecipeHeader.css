@@ -3,10 +3,49 @@
   padding: 0;
 }
 
+.recipe-header p {
+  color: rgb(177, 177, 177);
+}
+
+.recipe-header span {
+  position: fixed;
+  right: 4rem;
+  top: 25rem;
+}
+
 .recipe-header img {
-  width: 360px;
   height: 100%;
   margin: 0;
+  width: 360px;
+}
+
+.btn-container button img {
+  margin: 0;
+  padding: 0;
+  width: 1.2rem;
+}
+
+.share-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 26px;
+  left: 304px;
+  outline: none;
+  position: absolute;
+  top: 23rem;
+  width: 26px;
+}
+
+.favorite-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 26px;
+  left: 330px;
+  position: absolute;
+  top: 23rem;
+  width: 26px;
 }
 
 .ingredients-measures {
