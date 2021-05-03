@@ -15,6 +15,7 @@ import RecipesDone from '../pages/RecipesDone';
 import FavoriteRecipes from '../pages/FavoriteRecipes';
 import Details from '../pages/Details';
 import NotFound from '../pages/NotFound';
+import RecipeInProgress from '../pages/RecipeInProgress';
 
 export default function AllRoutes() {
   return (
@@ -36,7 +37,9 @@ export default function AllRoutes() {
         />
         <Route path="/explorar/bebidas" component={ ExploreDrink } />
         <Route path="/explorar" component={ Explore } />
+        <Route path="/comidas/:id/in-progress" component={ RecipeInProgress } />
         <Route path="/comidas/:id" component={ Details } />
+        <Route path="/bebidas/:id/in-progress" component={ RecipeInProgress } />
         <Route path="/bebidas/:id" component={ Details } />
         <Route path="/comidas" component={ Meals } />
         <Route path="/bebidas" component={ Drinks } />

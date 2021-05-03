@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import IngredientCard from '../components/IngredientCard';
 import useIngredientList from '../effects/useIngredientList';
 
+import '../styles/ExploreIngredients.css';
 
 export default function ExploreDrinksIngredients() {
   const searchIcon = false;

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { shape } from 'prop-types';
 
 import Header from '../components/Header';
 import SearchBarMeals from '../components/SearchBarMeals';
@@ -8,18 +9,23 @@ import Footer from '../components/Footer';
 import { MealsContext } from '../context/MealsContext';
 import RecipeCard from '../components/RecipeCard';
 
-export default function Meals() {
+export default function Meals({ testeContext }) {
   const {
-    filteredMeals: meals, mealCategories, toggleCategoryFilter,
-  } = useContext(MealsContext);
-  const searchIcon = true;
+    filteredMeals, mealCategories, toggleCategoryFilter,
+  } = useContext(testeContext || MealsContext);
+
+  const maxMeals = 12;
+  const maxCategories = 5;
+
+  const meals = filteredMeals.slice(0, maxMeals);
+  const categories = mealCategories.slice(0, maxCategories);
 
   return (
     <div>
       <Header
         title="Comidas"
         component={ <SearchBarMeals /> }
-        searchIcon={ searchIcon }
+        searchIcon
       />
 
       <div>
@@ -33,7 +39,7 @@ export default function Meals() {
       </div>
 
       {
-        mealCategories.map((category) => (
+        categories.map((category) => (
           <div key={ category }>
             <button
               data-testid={ `${category}-category-filter` }
@@ -66,3 +72,11 @@ export default function Meals() {
     </div>
   );
 }
+
+Meals.propTypes = {
+  testeContext: shape({}),
+};
+
+Meals.defaultProps = {
+  testeContext: undefined,
+};
