@@ -10,6 +10,6 @@
   width: 4vw;
 }
 
-.recipe-in-progress input[ type = 'checkbox' ]:checked + label {
+.recipe-in-progress input:checked + label {
   text-decoration: line-through;
 }
