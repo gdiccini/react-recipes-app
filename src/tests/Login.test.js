@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-import renderWithRouter from './renderWithRouter';
+import renderWithRouter from './renderWithRouterContext';
 import Login from '../pages/Login';
 
 describe('Testes referentes à página de Login', () => {
