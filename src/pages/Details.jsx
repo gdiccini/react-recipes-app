@@ -1,14 +1,21 @@
 import { shape, string } from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player/youtube';
 import { Link } from 'react-router-dom';
+
+import ReactPlayer from 'react-player/youtube';
+import Carousel from 'react-multi-carousel'; // lib usada para o requisito 37
+
 import RecipeHeader from '../components/RecipeHeader';
 import RecipeIngredients from '../components/RecipeIngredients';
 import RecipeInstructions from '../components/RecipeInstructions';
 
-import { fetchMealById, fetchDrinkById } from '../services/APIEndpoints';
+import {
+  fetchMealById, fetchDrinkById, fetchDrinks, fetchMeals,
+} from '../services/APIEndpoints';
 
+import 'react-multi-carousel/lib/styles.css';
 import '../styles/Details.css';
+import RecipeCard from '../components/RecipeCard';
 
 export default function Details({ match: { url, params: { id } } }) {
   const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || {};
@@ -17,16 +24,21 @@ export default function Details({ match: { url, params: { id } } }) {
 
   const [recipe, setRecipe] = useState({});
   const [recipeType, setRecipeType] = useState('comidas');
+  const [recomendations, setRecomendations] = useState([]);
 
   useEffect(() => {
     async function getRecipe() {
       if (url.includes('comidas')) {
         const { meals } = await fetchMealById(id);
+        const { drinks } = await fetchDrinks();
         setRecipe(meals[0]);
+        setRecomendations(drinks);
       } else {
         const { drinks } = await fetchDrinkById(id);
+        const { meals } = await fetchMeals();
         setRecipeType('bebidas');
         setRecipe(drinks[0]);
+        setRecomendations(meals);
       }
     }
 
@@ -40,6 +52,30 @@ export default function Details({ match: { url, params: { id } } }) {
     return inProgressRecipesIds
       .includes(recipe.idMeal || recipe.idDrink)
       ? 'Continuar Receita' : 'Iniciar Receita';
+  };
+
+  const showRecipeRecomendations = () => {
+    const maxRecomendations = 6;
+    const filterRecomendations = recomendations.slice(0, maxRecomendations);
+    return filterRecomendations;
+  };
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2,
+      slidesToSlide: 2,
+    },
   };
 
   return (
@@ -58,6 +94,37 @@ export default function Details({ match: { url, params: { id } } }) {
       {/* receitas recomendadas => carrousel */}
 
       {
+        recomendations.length && (
+          <Carousel
+            responsive={ responsive }
+            removeArrowOnDeviceType={ ['tablet', 'mobile'] }
+          >
+            {showRecipeRecomendations().map((recomendation, index) => (
+              <div
+                key={ recomendation.strMeal || recomendation.strDrink }
+                className={ recomendation.strMeal ? 'meal-card' : 'drink-card' }
+                data-testid={ `${index}-recomendation-card` }
+              >
+                <img
+                  src={ recomendation.strMealThumb || recomendation.strDrinkThumb }
+                  alt={ recomendation.strMeal || recomendation.strDrink }
+                  data-testid={ `${index}-card-img` }
+                />
+                <p
+                  className="category"
+                >
+                  {recomendation.strAlcoholic || recomendation.strCategory}
+                </p>
+                <p data-testid={ `${index}-recomendation-title` }>
+                  { recomendation.strMeal || recomendation.strDrink }
+                </p>
+              </div>
+            ))}
+          </Carousel>
+        )
+      }
+
+      {
         doneRecipes
           .every((recipeDone) => recipeDone.id !== (recipe.idMeal || recipe.idDrink))
           && (
@@ -72,7 +139,6 @@ export default function Details({ match: { url, params: { id } } }) {
             </Link>
           )
       }
-      <p data-testid="0-recomendation-card" />
     </>
   );
 }
@@ -84,3 +150,4 @@ Details.propTypes = {
     }),
   }),
 }.isRequired;
+
