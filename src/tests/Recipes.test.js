@@ -6,8 +6,6 @@ import { meals as mealCategories } from '../../cypress/mocks/mealCategories';
 import { drinks as drinkCategories } from '../../cypress/mocks/drinkCategories';
 import { drinks } from '../../cypress/mocks/drinks';
 
-import * as allFetchs from '../services/APIEndpoints';
-
 import Meals from '../pages/Meals';
 import Drinks from '../pages/Drinks';
 
@@ -94,7 +92,7 @@ describe('Testes da tela principal de receitas', () => {
       mealCategories: categories,
     };
 
-    const { findAllByTestId, getByText } = (
+    const { findAllByTestId } = (
       renderWithRouter(<Meals testeContext={ MockContext } />, context)
     );
     const allButtons = await findAllByTestId(/category/g);
