@@ -27,47 +27,53 @@ export default function Meals({ testeContext }) {
         component={ <SearchBarMeals /> }
         searchIcon
       />
-
-      <div>
-        <button
-          data-testid="All-category-filter"
-          onClick={ toggleCategoryFilter }
-          type="button"
-        >
-          All
-        </button>
-      </div>
-
-      {
-        categories.map((category) => (
-          <div key={ category }>
+      <div className="ingredientList">
+        <div className="category-container">
+          <div>
             <button
-              data-testid={ `${category}-category-filter` }
+              data-testid="All-category-filter"
               onClick={ toggleCategoryFilter }
               type="button"
+              className="filter-btn"
             >
-              {category}
+              All
             </button>
           </div>
-        ))
-      }
 
-      {
-        meals.map((meal, index, array) => {
-          const card = (
-            <RecipeCard
-              key={ meal.idMeal }
-              recipe={ meal }
-              index={ index }
-            />
-          );
+          {
+            categories.map((category) => (
+              <div key={ category }>
+                <button
+                  data-testid={ `${category}-category-filter` }
+                  onClick={ toggleCategoryFilter }
+                  type="button"
+                  className="filter-btn"
+                >
+                  {category}
+                </button>
+              </div>
+            ))
+          }
+        </div>
+        {
+          meals.map((meal, index, array) => {
+            const card = (
+              <RecipeCard
+                key={ meal.idMeal }
+                recipe={ meal }
+                index={ index }
+              />
+            );
 
-          return array.length > 1
-            ? <Link key={ meal.idMeal } to={ `/comidas/${meal.idMeal}` }>{card}</Link>
-            : card;
-        })
-      }
-
+            return array.length > 1
+              ? (
+                <div className="link-container">
+                  <Link key={ meal.idMeal } to={ `/comidas/${meal.idMeal}` }>{card}</Link>
+                </div>)
+              : card;
+          })
+        }
+      </div>
       <Footer />
     </div>
   );

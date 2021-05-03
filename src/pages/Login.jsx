@@ -35,7 +35,7 @@ export default function Login() {
         <h1>Login</h1>
       </header>
 
-      <main>
+      <main className="login-main">
         <div>
           <label htmlFor="Login">
             <input
@@ -49,7 +49,7 @@ export default function Login() {
           </label>
         </div>
 
-        <div>
+        <div className="user-password-input">
           <label htmlFor="Password">
             <input
               className="user-password"
@@ -71,7 +71,7 @@ export default function Login() {
               disabled={ isDisabled }
               onClick={ setUserCredentials }
             >
-              Sign in
+              Entrar
             </button>
           </div>
         </Link>

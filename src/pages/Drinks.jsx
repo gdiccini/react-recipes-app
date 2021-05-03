@@ -27,46 +27,58 @@ export default function Drinks({ testeContext }) {
         searchIcon
       />
 
-      <div>
-        <button
-          data-testid="All-category-filter"
-          onClick={ toggleCategoryFilter }
-          type="button"
-        >
-          All
-        </button>
-      </div>
-
-      {
-        categories.map((category) => (
-          <div key={ category }>
+      <div className="ingredientList">
+        <div className="category-container">
+          <div>
             <button
-              data-testid={ `${category}-category-filter` }
+              data-testid="All-category-filter"
               onClick={ toggleCategoryFilter }
               type="button"
+              className="filter-btn"
             >
-              {category}
+              All
             </button>
           </div>
-        ))
-      }
+          {
+            categories.map((category) => (
+              <div key={ category }>
+                <button
+                  data-testid={ `${category}-category-filter` }
+                  onClick={ toggleCategoryFilter }
+                  type="button"
+                  className="filter-btn"
+                >
+                  {category}
+                </button>
+              </div>
+            ))
+          }
+        </div>
+        {
+          drinks.map((drink, index, array) => {
+            const card = (
+              <RecipeCard
+                key={ drink.idDrink }
+                recipe={ drink }
+                index={ index }
+              />
+            );
 
-      {
-        drinks.map((drink, index, array) => {
-          const card = (
-            <RecipeCard
-              key={ drink.idDrink }
-              recipe={ drink }
-              index={ index }
-            />
-          );
-
-          return array.length > 1
-            ? <Link key={ drink.idDrink } to={ `/bebidas/${drink.idDrink}` }>{card}</Link>
-            : card;
-        })
-      }
-
+            return array.length > 1
+              ? (
+                <div className="link-container">
+                  <Link
+                    key={ drink.idDrink }
+                    to={ `/bebidas/${drink.idDrink}` }
+                  >
+                    {card}
+                  </Link>
+                </div>
+              )
+              : card;
+          })
+        }
+      </div>
       <Footer />
     </div>
   );
