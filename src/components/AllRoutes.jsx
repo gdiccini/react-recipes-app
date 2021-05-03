@@ -11,7 +11,7 @@ import ExploreDrink from '../pages/ExploreDrink';
 import ExploreMealIngredients from '../pages/ExploreMealIngredients';
 import ExploreDrinkIngredients from '../pages/ExploreDrinkIngredients';
 import ExploreMealByOrigin from '../pages/ExploreMealByOrigin';
-import RecipesDone from '../pages/RecipesDone';
+import RecipesDone from '../pages/DoneRecipes';
 import FavoriteRecipes from '../pages/FavoriteRecipes';
 import Details from '../pages/Details';
 import NotFound from '../pages/NotFound';

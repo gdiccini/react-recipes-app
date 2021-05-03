@@ -90,38 +90,32 @@ export default function Details({ match: { url, params: { id } } }) {
         />
       )}
 
-      {/* receitas recomendadas => carrousel */}
-
-      {
-        recomendations.length && (
-          <Carousel
-            responsive={ responsive }
-            removeArrowOnDeviceType={ ['tablet', 'mobile'] }
+      <Carousel
+        responsive={ responsive }
+        removeArrowOnDeviceType={ ['tablet', 'mobile'] }
+      >
+        {showRecipeRecomendations().map((recomendation, index) => (
+          <div
+            key={ recomendation.strMeal || recomendation.strDrink }
+            className={ recomendation.strMeal ? 'meal-card' : 'drink-card' }
+            data-testid={ `${index}-recomendation-card` }
           >
-            {showRecipeRecomendations().map((recomendation, index) => (
-              <div
-                key={ recomendation.strMeal || recomendation.strDrink }
-                className={ recomendation.strMeal ? 'meal-card' : 'drink-card' }
-                data-testid={ `${index}-recomendation-card` }
-              >
-                <img
-                  src={ recomendation.strMealThumb || recomendation.strDrinkThumb }
-                  alt={ recomendation.strMeal || recomendation.strDrink }
-                  data-testid={ `${index}-card-img` }
-                />
-                <p
-                  className="category"
-                >
-                  {recomendation.strAlcoholic || recomendation.strCategory}
-                </p>
-                <p data-testid={ `${index}-recomendation-title` }>
-                  { recomendation.strMeal || recomendation.strDrink }
-                </p>
-              </div>
-            ))}
-          </Carousel>
-        )
-      }
+            <img
+              src={ recomendation.strMealThumb || recomendation.strDrinkThumb }
+              alt={ recomendation.strMeal || recomendation.strDrink }
+              data-testid={ `${index}-card-img` }
+            />
+            <p
+              className="category"
+            >
+              {recomendation.strAlcoholic || recomendation.strCategory}
+            </p>
+            <p data-testid={ `${index}-recomendation-title` }>
+              { recomendation.strMeal || recomendation.strDrink }
+            </p>
+          </div>
+        ))}
+      </Carousel>
 
       {
         doneRecipes
