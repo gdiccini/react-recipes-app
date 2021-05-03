@@ -6,10 +6,10 @@
 
 .recipe-in-progress input {
   height: 2vh;
-  width: 4vw;
   margin: auto;
+  width: 4vw;
 }
 
-.recipe-in-progress input[type=checkbox]:checked + label {
+.recipe-in-progress input[ type = 'checkbox' ]:checked + label {
   text-decoration: line-through;
 }
