@@ -46,5 +46,9 @@ export default function Header({ title, searchIcon }) {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  searchIcon: PropTypes.bool.isRequired,
+  searchIcon: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  searchIcon: false,
 };

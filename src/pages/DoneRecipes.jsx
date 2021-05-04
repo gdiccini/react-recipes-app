@@ -4,8 +4,6 @@ import Header from '../components/Header';
 import '../styles/DoneRecipes.css';
 
 export default function DoneRecipes() {
-  const searchIcon = false;
-
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
   const [isLinkCopied, setIsLinkCopied] = useState(false);
   const [filteredRecipes, setFilteredRecipes] = useState(doneRecipes);
@@ -35,7 +33,7 @@ export default function DoneRecipes() {
 
   return (
     <section>
-      <Header title="Receitas Feitas" searchIcon={ searchIcon } />
+      <Header title="Receitas Feitas" searchIcon />
 
       <div>
         <button

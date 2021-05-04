@@ -50,3 +50,8 @@ export default function RecipeIngredients({ url, recipe }) {
 RecipeIngredients.propTypes = {
   ingredients: shape({}),
 }.isRequired;
+
+// carrega a pagina pega dados do localStorage
+// estado do componente com as receitas feitas
+// gatilho: mudança do estado da aplicacao
+// setar localStorage = estado do componente
