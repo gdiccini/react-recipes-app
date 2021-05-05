@@ -61,7 +61,6 @@ export default function RecipeInProgress({ match: { url, params: { id: recipeId 
 
       <RecipeIngredients
         recipe={ recipe }
-        url={ url }
         enableButton={ setEnableButton }
       />
 

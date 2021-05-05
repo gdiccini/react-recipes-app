@@ -2,17 +2,13 @@ import { shape } from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import '../styles/RecipeIngredients.css';
 
-export default function RecipeIngredients({ url, recipe, enableButton }) {
+export default function RecipeIngredients({ recipe, enableButton }) {
   const [doneIngredients, setDoneIngredients] = useState({
     ...JSON.parse(localStorage.getItem('inProgressRecipes')),
-  } || {
-    cocktails: {},
-    meals: {},
   });
 
-  const id = url.includes('comidas') ? recipe.idMeal : recipe.idDrink;
-
-  const type = recipe.idMeal ? 'meals' : 'cocktails';
+  const [type, id] = [recipe.idMeal ? 'meals' : 'cocktails',
+    recipe.idMeal || recipe.idDrink];
 
   const ingredients = Object.keys(recipe)
     .filter((ingredient) => ingredient.includes('strIngredient') && recipe[ingredient]);
@@ -27,6 +23,7 @@ export default function RecipeIngredients({ url, recipe, enableButton }) {
       const updateInProgressRecipes = {
         ...inProgressRecipes,
         [type]: {
+          ...inProgressRecipes[type],
           [id]: [index],
         },
       };
@@ -39,6 +36,7 @@ export default function RecipeIngredients({ url, recipe, enableButton }) {
       const updateInProgressRecipes = {
         ...inProgressRecipes,
         [type]: {
+          ...inProgressRecipes[type],
           [id]: [...inProgressRecipes[type][id], index],
         },
       };
@@ -78,7 +76,7 @@ export default function RecipeIngredients({ url, recipe, enableButton }) {
           ingredients.map((ingredient, index) => (
             <div key={ ingredient } data-testid={ `${index}-ingredient-step` }>
               <input
-                checked={ doneIngredients[type]
+                checked={ doneIngredients[type] && doneIngredients[type][id]
                   ? doneIngredients[type][id].includes(index)
                   : false }
                 type="checkbox"
