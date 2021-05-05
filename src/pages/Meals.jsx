@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { shape } from 'prop-types';
 
 import Header from '../components/Header';
-import SearchBarMeals from '../components/SearchBarMeals';
 import Footer from '../components/Footer';
 
 import { MealsContext } from '../context/MealsContext';
@@ -13,20 +12,37 @@ export default function Meals({ testeContext }) {
   const {
     filteredMeals, mealCategories, toggleCategoryFilter,
   } = useContext(testeContext || MealsContext);
+  const [searchBarOn, setSearchBarOn] = useState(false);
+  const [meals, setMeals] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const maxMeals = 12;
   const maxCategories = 5;
 
-  const meals = filteredMeals.slice(0, maxMeals);
-  const categories = mealCategories.slice(0, maxCategories);
+  useEffect(() => {
+    setMeals(filteredMeals.slice(0, maxMeals));
+  }, [filteredMeals, setMeals]);
+
+  useEffect(() => {
+    setCategories(mealCategories.slice(0, maxCategories));
+  }, [mealCategories, setCategories]);
+
+  const newRecipes = (recipes) => {
+    setMeals(recipes);
+  };
 
   return (
     <div>
+      { meals.length === 1 && <Redirect to={ `/comidas/${meals[0].idMeal}` } /> }
       <Header
         title="Comidas"
-        component={ <SearchBarMeals /> }
+        setSearchBarOn={ setSearchBarOn }
+        searchBarOn={ searchBarOn }
+        recipeType="meal"
+        newRecipes={ newRecipes }
         searchIcon
       />
+
       <div className="ingredientList">
         <div className="category-container">
           <div>
@@ -41,7 +57,7 @@ export default function Meals({ testeContext }) {
           </div>
 
           {
-            categories.map((category) => (
+            categories !== [] && categories.map((category) => (
               <div key={ category }>
                 <button
                   data-testid={ `${category}-category-filter` }
@@ -56,7 +72,7 @@ export default function Meals({ testeContext }) {
           }
         </div>
         {
-          meals.map((meal, index, array) => {
+          meals !== [] && meals.map((meal, index, array) => {
             const card = (
               <RecipeCard
                 key={ meal.idMeal }

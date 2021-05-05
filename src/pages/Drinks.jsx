@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { shape } from 'prop-types';
 
-import Footer from '../components/Footer';
 import Header from '../components/Header';
-import SearchBarDrink from '../components/SearchBarDrink';
+import Footer from '../components/Footer';
+
 import DrinksContext from '../context/DrinksContext';
 import RecipeCard from '../components/RecipeCard';
 
@@ -12,18 +12,34 @@ export default function Drinks({ testeContext }) {
   const {
     filteredDrinks, drinkCategories, toggleCategoryFilter,
   } = useContext(testeContext || DrinksContext);
+  const [searchBarOn, setSearchBarOn] = useState(false);
+  const [drinks, setDrinks] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const maxDrinks = 12;
   const maxCategories = 5;
 
-  const drinks = filteredDrinks.slice(0, maxDrinks);
-  const categories = drinkCategories.slice(0, maxCategories);
+  useEffect(() => {
+    setDrinks(filteredDrinks.slice(0, maxDrinks));
+  }, [filteredDrinks, setDrinks]);
+
+  useEffect(() => {
+    setCategories(drinkCategories.slice(0, maxCategories));
+  }, [drinkCategories, setCategories]);
+
+  const newRecipes = (recipes) => {
+    setDrinks(recipes);
+  };
 
   return (
     <div>
+      { drinks.length === 1 && <Redirect to={ `/bebidas/${drinks[0].idDrink}` } /> }
       <Header
         title="Bebidas"
-        component={ <SearchBarDrink /> }
+        setSearchBarOn={ setSearchBarOn }
+        searchBarOn={ searchBarOn }
+        recipeType="drink"
+        newRecipes={ newRecipes }
         searchIcon
       />
 
@@ -40,7 +56,7 @@ export default function Drinks({ testeContext }) {
             </button>
           </div>
           {
-            categories.map((category) => (
+            categories !== [] && categories.map((category) => (
               <div key={ category }>
                 <button
                   data-testid={ `${category}-category-filter` }
@@ -55,7 +71,7 @@ export default function Drinks({ testeContext }) {
           }
         </div>
         {
-          drinks.map((drink, index, array) => {
+          drinks !== [] && drinks.map((drink, index, array) => {
             const card = (
               <RecipeCard
                 key={ drink.idDrink }
