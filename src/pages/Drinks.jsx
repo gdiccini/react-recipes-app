@@ -5,7 +5,7 @@ import { shape } from 'prop-types';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SearchBarDrink from '../components/SearchBarDrink';
-import DrinksContext from '../context/DrinksContext';
+import { DrinksContext } from '../context/DrinksContext';
 import RecipeCard from '../components/RecipeCard';
 
 export default function Drinks({ testeContext }) {

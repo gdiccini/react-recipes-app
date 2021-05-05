@@ -1,25 +1,25 @@
 import React, { createContext, useState } from 'react';
 import { node } from 'prop-types';
 import {
-  fetchDrinkByCategory, fetchDrinkCategories, fetchDrinks,
+  fetchDrinkByCategory, fetchDrinkCategories, fetchDrinks, fetchDrinkByIngredient,
 } from '../services/APIEndpoints';
 import useRecipe from '../effects/useRecipe';
 import useRecipeCategories from '../effects/useRecipeCategories';
 import useFilterByCategory from '../effects/useFilterByCategory';
+import useFilterByIngredient from '../effects/useFilterByIngredient';
 
-const DrinksContext = createContext();
-
-export default DrinksContext;
+export const DrinksContext = createContext();
 
 export function DrinksProvider({ children }) {
   const [drinks, setDrinks] = useState([]);
   const [drinkCategories, setDrinkCategories] = useState([]);
   const [filteredDrinks, setFilteredDrinks] = useState([]);
   const [filterCategory, setFilterCategory] = useState('');
+  const [ingredientFilter, setIngredientFilter] = useState('');
 
   function toggleCategoryFilter({ target: { innerText } }) {
     if (filterCategory !== innerText && innerText !== 'All') setFilterCategory(innerText);
-    else setFilterCategory('');
+    else setFilterCategory(''); setIngredientFilter('');
   }
 
   useRecipe(fetchDrinks, setDrinks);
@@ -27,7 +27,13 @@ export function DrinksProvider({ children }) {
 
   useFilterByCategory(fetchDrinkByCategory, setFilteredDrinks, filterCategory, drinks);
 
-  const context = { filteredDrinks, drinkCategories, toggleCategoryFilter };
+  useFilterByIngredient(
+    fetchDrinkByIngredient, setFilteredDrinks, ingredientFilter, drinks,
+  );
+
+  const context = {
+    filteredDrinks, drinkCategories, toggleCategoryFilter, setIngredientFilter,
+  };
 
   return (
     <DrinksContext.Provider value={ context }>

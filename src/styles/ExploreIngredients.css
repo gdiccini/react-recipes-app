@@ -2,9 +2,8 @@
   background-color: white;
   display: flex;
   flex-flow: row wrap;
-  height: 130rem;
   justify-content: space-evenly;
-  margin-bottom: 10vh;
+  margin-bottom: 15vh;
 }
 
 .ingredient-card {
@@ -14,15 +13,16 @@
   box-shadow: 3px 3px rgb(196, 196, 196);
   display: flex;
   flex-direction: column;
-  height: 15rem;
+  height: 14rem;
   justify-content: center;
   margin: 0.15rem;
-  width: 13rem;
+  text-align: center;
+  width: 11rem;
 }
 
 .recipe-img {
   border-radius: 2vh;
-  width: 10rem;
+  width: 7rem;
 }
 
 .filter-btn {

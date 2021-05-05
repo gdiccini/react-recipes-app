@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-import '../styles/DoneRecipes.css';
+import '../styles/ExploreIngredients.css';
 
 export default function DoneRecipes() {
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
