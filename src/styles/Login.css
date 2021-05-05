@@ -28,9 +28,9 @@
 }
 
 .btn-login {
-  background-color: #6CE34F;
-  box-sizing: border-box;
+  background-color: rgb(108, 227, 79);
   border-radius: 20% 50%;
+  box-sizing: border-box;
   height: 3rem;
   width: 4rem;
 }
