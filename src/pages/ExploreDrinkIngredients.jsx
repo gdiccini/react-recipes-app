@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Loading from '../components/Loading';
@@ -16,6 +17,8 @@ export default function ExploreDrinksIngredients() {
 
   useIngredientList(setIngredients, setLoading, mealsOrDrinks);
 
+  console.log(ingredients);
+
   return (
     <div>
       <Header title="Explorar Ingredientes" searchIcon={ searchIcon } />
@@ -23,12 +26,13 @@ export default function ExploreDrinksIngredients() {
         {loading ? <Loading /> : ingredients
           .filter((_item, index) => index < itemCardMax)
           .map((item, index) => (
-            <IngredientCard
-              item={ item }
-              index={ index }
-              mealsOrDrinks={ mealsOrDrinks }
-              key={ index }
-            />
+            <Link key={ index } to="/bebidas">
+              <IngredientCard
+                item={ item }
+                index={ index }
+                mealsOrDrinks={ mealsOrDrinks }
+              />
+            </Link>
           ))}
       </main>
       <Footer />
