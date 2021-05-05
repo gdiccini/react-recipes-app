@@ -6,7 +6,6 @@ import ReactPlayer from 'react-player/youtube';
 import Carousel from 'react-multi-carousel'; // lib usada para o requisito 37
 
 import RecipeHeader from '../components/RecipeHeader';
-import RecipeIngredients from '../components/RecipeIngredients';
 import RecipeInstructions from '../components/RecipeInstructions';
 
 import {
@@ -17,13 +16,49 @@ import 'react-multi-carousel/lib/styles.css';
 import '../styles/Details.css';
 
 export default function Details({ match: { url, params: { id } } }) {
+  const [recipe, setRecipe] = useState({});
+  const [recipeType, setRecipeType] = useState('comidas');
+  const [recomendations, setRecomendations] = useState([]);
+
   const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || {};
 
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
 
-  const [recipe, setRecipe] = useState({});
-  const [recipeType, setRecipeType] = useState('comidas');
-  const [recomendations, setRecomendations] = useState([]);
+  const startButtonText = () => {
+    const inProgressRecipesKeys = Object.keys(inProgressRecipes);
+    const inProgressRecipesIds = inProgressRecipesKeys
+      .map((key) => Object.keys(inProgressRecipes[key])).flat();
+    return inProgressRecipesIds
+      .includes(recipe.idMeal || recipe.idDrink)
+      ? 'Continuar Receita' : 'Iniciar Receita';
+  };
+
+  const showRecipeRecomendations = () => {
+    const maxRecomendations = 6;
+    const filterRecomendations = recomendations.slice(0, maxRecomendations);
+    return filterRecomendations;
+  };
+
+  const ingredients = Object.keys(recipe)
+    .filter((ingredient) => ingredient.includes('strIngredient') && recipe[ingredient]);
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+  };
 
   useEffect(() => {
     async function getRecipe() {
@@ -44,44 +79,27 @@ export default function Details({ match: { url, params: { id } } }) {
     getRecipe();
   }, [id, url]);
 
-  const startButtonText = () => {
-    const inProgressRecipesKeys = Object.keys(inProgressRecipes);
-    const inProgressRecipesIds = inProgressRecipesKeys
-      .map((key) => Object.keys(inProgressRecipes[key])).flat();
-    return inProgressRecipesIds
-      .includes(recipe.idMeal || recipe.idDrink)
-      ? 'Continuar Receita' : 'Iniciar Receita';
-  };
-
-  const showRecipeRecomendations = () => {
-    const maxRecomendations = 6;
-    const filterRecomendations = recomendations.slice(0, maxRecomendations);
-    return filterRecomendations;
-  };
-
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      slidesToSlide: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 2,
-      slidesToSlide: 2,
-    },
-  };
-
   return (
     <>
       <RecipeHeader recipe={ recipe } url={ url } />
-      <RecipeIngredients recipe={ recipe } url={ url } />
+
+      <section className="recipe-details">
+        <ul className="ingredients-measures">
+          {
+            ingredients.map((ingredient, index) => (
+              <li
+                key={ ingredient }
+                data-testid={ `${index}-ingredient-name-and-measure` }
+              >
+                { `- ${recipe[ingredient]} - ${recipe[`strMeasure${index + 1}`]}` }
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
       <RecipeInstructions recipe={ recipe } />
+
       {url.includes('comidas') && (
         <ReactPlayer
           data-testid="video"
