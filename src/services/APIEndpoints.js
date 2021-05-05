@@ -70,48 +70,48 @@ export function fetchIngredientImage(item, isMeal, mealsOrDrinks) {
 
 export async function fetchMealByIngredient(ingredient) {
   const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
-  const json = await request.json();
-  return json;
+  const response = await request.json();
+  return response;
 }
 
 export async function fetchDrinkByIngredient(ingredient) {
   const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
-  const json = await request.json();
-  return json;
+  const response = await request.json();
+  return response;
 }
 
 export async function fetchMealByFirstLetter(firstLetter) {
   const request = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${firstLetter}`);
-  const json = await request.json();
-  return json;
+  const response = await request.json();
+  return response;
 }
 
 export async function fetchDrinkByFirstLetter(firstLetter) {
   const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${firstLetter}`);
-  const json = await request.json();
-  return json;
+  const response = await request.json();
+  return response;
 }
 
 export async function fetchRandomMeal() {
   const request = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
-  const json = await request.json();
-  return json;
+  const response = await request.json();
+  return response;
 }
 
 export async function fetchRandomDrink() {
   const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
-  const json = await request.json();
-  return json;
+  const response = await request.json();
+  return response;
 }
 
 export async function fetchMealsAreas() {
   const request = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
-  const json = await request.json();
-  return json;
+  const response = await request.json();
+  return response;
 }
 
 export async function fetchMealsByArea(area) {
   const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
-  const json = await request.json();
-  return json;
+  const response = await request.json();
+  return response;
 }

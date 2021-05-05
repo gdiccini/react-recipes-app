@@ -33,7 +33,7 @@ export default function DoneRecipes() {
 
   return (
     <section>
-      <Header title="Receitas Feitas" searchIcon={ false } />
+      <Header title="Receitas Feitas" />
 
       <div>
         <button
