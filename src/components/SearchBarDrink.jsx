@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router';
-import DrinkContext from '../context/DrinksContext';
+import { DrinksContext } from '../context/DrinksContext';
 import {
   fetchDrinkByIngredient,
   fetchDrinks,
@@ -19,7 +19,7 @@ function SearchBarDrink() {
       handleSearchType,
       setDrinks,
     },
-  } = useContext(DrinkContext);
+  } = useContext(DrinksContext);
 
   const [redirect, setRedirect] = useState(false);
   const [path, setPath] = useState(false);
