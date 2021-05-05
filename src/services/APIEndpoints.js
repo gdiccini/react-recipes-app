@@ -60,8 +60,11 @@ export async function fetchDrinksIngredientList() {
   return response.drinks;
 }
 
-export function fetchIngredientImage(item, isMeal) {
+export function fetchIngredientImage(item, isMeal, mealsOrDrinks) {
   const parameter = isMeal ? item.strIngredient : item.strIngredient1;
+  if (mealsOrDrinks === 'drinks') {
+    return `https://www.thecocktaildb.com/images/ingredients/${parameter}-Small.png`;
+  }
   return `https://www.themealdb.com/images/ingredients/${parameter}-Small.png`;
 }
 

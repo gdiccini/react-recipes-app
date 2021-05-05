@@ -3,10 +3,10 @@ import { arrayOf } from 'prop-types';
 import { fetchIngredientImage } from '../services/APIEndpoints';
 import '../styles/ExploreIngredients.css';
 
-export default function IngredientCard({ item, index }) {
+export default function IngredientCard({ item, index, mealsOrDrinks }) {
   let isMeal = false;
   if (item.strIngredient) isMeal = true;
-  const ingredientImage = fetchIngredientImage(item, isMeal);
+  const ingredientImage = fetchIngredientImage(item, isMeal, mealsOrDrinks);
   return (
     <div
       key={ isMeal ? item.strIngredient : item.strIngredient1 }
