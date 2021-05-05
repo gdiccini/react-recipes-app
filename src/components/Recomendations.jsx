@@ -1,6 +1,7 @@
 import { arrayOf } from 'prop-types';
 import React from 'react';
-import Carousel from 'react-multi-carousel'; // lib usada para o requisito 37
+// import Carousel from 'react-multi-carousel'; // lib usada para o requisito 37
+import { Carousel } from 'react-bootstrap';
 
 export default function Recomendations({ recomendations }) {
   const showRecipeRecomendations = () => {
@@ -9,49 +10,38 @@ export default function Recomendations({ recomendations }) {
     return filterRecomendations;
   };
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      slidesToSlide: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 2,
-      slidesToSlide: 2,
-    },
-  };
-
   return (
     <Carousel
-      responsive={ responsive }
-      removeArrowOnDeviceType={ ['tablet', 'mobile'] }
+      fade
+      indicators={ false }
+      // controls={ false }
+      interval={ 3000 }
     >
       {showRecipeRecomendations().map((recomendation, index) => (
-        <div
+        <Carousel.Item
           key={ recomendation.strMeal || recomendation.strDrink }
-          className={ recomendation.strMeal ? 'meal-card' : 'drink-card' }
+          // className={ recomendation.strMeal ? 'meal-card' : 'drink-card' }
           data-testid={ `${index}-recomendation-card` }
         >
           <img
+            className="d-block w-100"
             src={ recomendation.strMealThumb || recomendation.strDrinkThumb }
             alt={ recomendation.strMeal || recomendation.strDrink }
             data-testid={ `${index}-card-img` }
           />
-          <p
-            className="category"
-          >
-            {recomendation.strAlcoholic || recomendation.strCategory}
-          </p>
-          <p data-testid={ `${index}-recomendation-title` }>
-            { recomendation.strMeal || recomendation.strDrink }
-          </p>
-        </div>
+
+          <Carousel.Caption>
+            <p
+              className="category"
+            >
+              {recomendation.strAlcoholic || recomendation.strCategory}
+            </p>
+            <p data-testid={ `${index}-recomendation-title` }>
+              { recomendation.strMeal || recomendation.strDrink }
+            </p>
+          </Carousel.Caption>
+
+        </Carousel.Item>
       ))}
     </Carousel>
   );
